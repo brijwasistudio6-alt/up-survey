@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UP Chunav 2027 - Maha Survey</title>
+    <style>
+        body { background: #f1f5f9; font-family: sans-serif; color: #1e293b; text-align: center; padding: 15px; margin: 0; }
+        .container { max-width: 420px; background: #ffffff; margin: 20px auto; padding: 20px; border-radius: 14px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        h2 { color: #b91c1c; font-size: 20px; margin-bottom: 8px; }
+        p { font-size: 13px; color: #64748b; }
+        .btn { background: #ffffff; border: 2px solid #e2e8f0; color: #334155; padding: 12px 15px; width: 100%; font-size: 15px; font-weight: bold; border-radius: 8px; cursor: pointer; margin: 8px 0; text-align: left; display: flex; justify-content: space-between; }
+        .btn:hover { border-color: #b91c1c; background: #fef2f2; }
+        .share-btn { background: #25D366; color: white; border: none; padding: 14px; width: 100%; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 15px; display: none; }
+        .result-box { margin-top: 15px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🗳️ UP Chunav Maha Survey 2027</h2>
+        <p>Uttar Pradesh mein agla mukhyamantri kisko dekhna chahte hain? Vote de kar live result dekhein!</p>
+        <hr style="border:0; border-top:1px solid #eee; margin:12px 0;">
+
+        <div id="voting-section">
+            <button class="btn" onclick="vote('BJP')"><span>🪷 BJP (Yogi Adityanath)</span> <span>Vote</span></button>
+            <button class="btn" onclick="voteannoSP')"><span>🚲 Samajwadi Party (Akhilesh)</span> <span>Vote</span></button>
+            <button class="btn" onclick="vote('BSP')"><span>🐘 BSP (Mayawati)</span> <span>Vote</span></button>
+            <button class="btn" onclick="vote('Congress')"><span>✋ Congress</span> <span>Vote</span></button>
+        </div>
+
+        <div id="result-section" class="result-box">
+            <p style="color: #047857; font-size: 15px; font-weight: bold;">✅ Aapka vote darj ho gaya!</p>
+            <p style="font-size: 14px; color: #334155;">🔥 Live Total Votes: <b id="vote-count">2,48,150</b></p>
+        </div>
+
+        <button id="whatsapp-share" class="share-btn" onclick="shareOnWhatsApp()">
+            📲 WhatsApp Group Me Share Karein
+        </button>
+    </div>
+
+    <script>
+        const DIRECT_AD_LINK = "https://auctionr.org/4/0b4e2c763a4f73c1441c9ce965b6546d";
+        let hasVoted = false;
+
+        function vote(party) {
+            if(hasVoted) return;
+            hasVoted = true;
+            document.getElementById('voting-section').style.display = 'none';
+            document.getElementById('result-section').style.display = 'block';
+            document.getElementById('whatsapp-share').style.display = 'block';
+            let currentVotes = 248150 + Math.floor(Math.random() * 500);
+            document.getElementById('vote-count').innerText = currentVotes.toLocaleString();
+        }
+
+        function shareOnWhatsApp() {
+            window.open(DIRECT_AD_LINK, '_blank');
+            let message = "🚨 UP Chunav 2027 Maha Survey! Dekho kis party ka palra bhaari hai. Aap bhi apna vote yahan dein: " + window.location.href;
+            let whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(message);
+            setTimeout(() => { window.location.href = whatsappUrl; }, 400);
+        }
+    </script>
+</body>
+</html>
